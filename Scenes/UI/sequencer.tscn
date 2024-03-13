@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://rlhwfp31o6m"]
+
+[ext_resource type="Script" path="res://Scripts/UI/sequencer.gd" id="1_repln"]
+[ext_resource type="AudioStream" uid="uid://h0b5gx75msht" path="res://Resources/Audio/metronome.ogg" id="3_hl7d5"]
+
+[node name="Sequencer" type="Control"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_repln")
+
+[node name="MeasureContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -452.5
+offset_top = -100.0
+offset_right = 452.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TempoTimer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hl7d5")
+volume_db = -6.04
+max_polyphony = 2
+
+[connection signal="timeout" from="TempoTimer" to="." method="_on_tempo_timer_timeout"]

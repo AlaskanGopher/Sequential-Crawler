@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxrhbmw8khcun"]
+
+[ext_resource type="PackedScene" uid="uid://rlhwfp31o6m" path="res://Scenes/UI/sequencer.tscn" id="1_b1ktv"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sequencer" parent="." instance=ExtResource("1_b1ktv")]
+layout_mode = 1
