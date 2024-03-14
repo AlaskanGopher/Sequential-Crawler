@@ -1,17 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://do7qm820p2alj"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_a5eqv"]
-[ext_resource type="Resource" uid="uid://bkipyhfrgbqn" path="res://Scripts/Items/Weapons/sword.tres" id="2_h0hdf"]
 [ext_resource type="Texture2D" uid="uid://c74cjjllenph1" path="res://Resources/Sprites/Dev Art/player.png" id="2_k47tl"]
+[ext_resource type="Resource" uid="uid://bkipyhfrgbqn" path="res://Resources/Weapons/sword.tres" id="2_ryifw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_offws"]
 radius = 17.0
 height = 66.0
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(302, 198)
 script = ExtResource("1_a5eqv")
-WEAPON = ExtResource("2_h0hdf")
+WEAPONS = Array[Resource("res://Scripts/Items/Weapons/weapon.gd")]([ExtResource("2_ryifw")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_offws")

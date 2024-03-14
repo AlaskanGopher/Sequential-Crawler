@@ -7,9 +7,11 @@ extends Control
 var measures := []
 var currentMeasure : int = -1
 
+signal on_beat(measure : int, beat : int)
+
 func add_barline():
 	var barline = ColorRect.new()
-	barline.custom_minimum_size = Vector2(2, 50)
+	barline.custom_minimum_size = Vector2(2, 30)
 	$MeasureContainer.add_child(barline)
 
 # Called when the node enters the scene tree for the first time.
@@ -34,6 +36,7 @@ func _on_tempo_timer_timeout():
 	if measures[currentMeasure].currentBeat != measures[currentMeasure].NUM_BEATS-1:
 		$AudioStreamPlayer.pitch_scale = 1
 		$AudioStreamPlayer.play()
+	emit_signal("on_beat", currentMeasure, measures[currentMeasure].currentBeat + 1)
 	measures[currentMeasure].progressSequence()
 
 func _on_measure_finished():
@@ -44,3 +47,5 @@ func _on_measure_finished():
 	currentMeasure %= len(measures)
 	measures[currentMeasure].progressSequence()
 
+func _input(event):
+	pass

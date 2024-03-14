@@ -1,9 +1,10 @@
 [gd_resource type="Resource" script_class="Weapon" load_steps=2 format=3 uid="uid://bkipyhfrgbqn"]
 
-[ext_resource type="Script" path="res://Scripts/Items/Weapons/weapon.gd" id="1_esxkw"]
+[ext_resource type="Script" path="res://Scripts/Items/Weapons/weapon.gd" id="1_7bgia"]
 
 [resource]
-script = ExtResource("1_esxkw")
+resource_local_to_scene = true
+script = ExtResource("1_7bgia")
 name = "Sword"
 damage = 5
 beats = 4
