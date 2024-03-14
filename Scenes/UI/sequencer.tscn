@@ -21,9 +21,6 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -452.5
-offset_top = -100.0
-offset_right = 452.5
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -31,7 +28,7 @@ grow_vertical = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_hl7d5")
-volume_db = -6.04
+volume_db = -6.0
 max_polyphony = 2
 
 [connection signal="timeout" from="TempoTimer" to="." method="_on_tempo_timer_timeout"]

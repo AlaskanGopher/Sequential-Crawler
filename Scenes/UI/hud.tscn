@@ -12,3 +12,4 @@ grow_vertical = 2
 
 [node name="Sequencer" parent="." instance=ExtResource("1_b1ktv")]
 layout_mode = 1
+NUM_MEASURES = 6

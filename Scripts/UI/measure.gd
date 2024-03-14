@@ -8,11 +8,14 @@ var currentBeat : int = -1
 
 signal measureFinished
 
+func _init(number_beats = 4):
+	NUM_BEATS = number_beats
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for i in range(self.NUM_BEATS):
 		var beat := ColorRect.new()
-		beat.custom_minimum_size = Vector2(50, 50)
+		beat.custom_minimum_size = Vector2(20, 20)
 		beat.size_flags_horizontal = Control.SIZE_FILL
 		beat.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		beats.append(beat)

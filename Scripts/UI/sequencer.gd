@@ -2,22 +2,21 @@ extends Control
 
 @export_range(0, 240, 1.0, "or_greater") var BEATS_PER_MINUTE : float = 120.0
 @export_range(1, 4, 1, "or_greater") var NUM_MEASURES : int = 4
+@export_range(1, 4, 1, "or_greater") var BEATS_PER_MEASURE : int = 4
 
 var measures := []
 var currentMeasure : int = -1
 
-var playback : AudioStreamPlayback = null
-
 func add_barline():
 	var barline = ColorRect.new()
-	barline.custom_minimum_size = Vector2(5, 100)
+	barline.custom_minimum_size = Vector2(2, 50)
 	$MeasureContainer.add_child(barline)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for i in range(NUM_MEASURES):
 		add_barline()
-		var measure := Measure.new()
+		var measure := Measure.new(BEATS_PER_MEASURE)
 		measure.connect("measureFinished", _on_measure_finished)
 		measures.append(measure)
 		$MeasureContainer.add_child(measure)
