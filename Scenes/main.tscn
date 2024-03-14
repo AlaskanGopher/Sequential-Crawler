@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://doaw5yl30hnhc"]
+[gd_scene load_steps=8 format=3 uid="uid://doaw5yl30hnhc"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_5s7m0"]
 [ext_resource type="PackedScene" uid="uid://do7qm820p2alj" path="res://Scenes/player.tscn" id="1_mj5da"]
 [ext_resource type="PackedScene" uid="uid://bxrhbmw8khcun" path="res://Scenes/UI/hud.tscn" id="2_hk0d4"]
 [ext_resource type="Script" path="res://Scripts/Items/Weapons/weapon.gd" id="3_68ejy"]
+[ext_resource type="TileSet" uid="uid://dh5xdo6g6whpm" path="res://Tilesets/dungeon.tres" id="5_02i0d"]
 
 [sub_resource type="Resource" id="Resource_emdmb"]
 resource_local_to_scene = true
@@ -28,3 +29,13 @@ script = ExtResource("1_5s7m0")
 WEAPONS = Array[ExtResource("3_68ejy")]([SubResource("Resource_emdmb"), SubResource("Resource_gekaf")])
 
 [node name="HUD" parent="." instance=ExtResource("2_hk0d4")]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("5_02i0d")
+rendering_quadrant_size = 32
+format = 2
+layer_0/name = "Background"
+layer_0/z_index = -1
+layer_0/tile_data = PackedInt32Array(720934, 131072, 3, 720933, 131072, 3, 786469, 131072, 3, 786470, 131072, 3, 786471, 131072, 3, 720936, 131072, 3, 655401, 131072, 3, 655402, 131072, 3, 589866, 131072, 3, 524328, 131072, 3, 524327, 131072, 3, 589862, 131072, 3, 655398, 131072, 3, 655397, 131072, 3, 589864, 131072, 3, 589863, 131072, 3, 655399, 131072, 3, 655400, 131072, 3, 720935, 131072, 3, 589865, 131072, 3, 720938, 131072, 3, 720937, 131072, 3, 786472, 131072, 3, 852009, 131072, 3, 786473, 131072, 3, 786474, 131072, 3, 458789, 0, 0, 458790, 0, 0, 458791, 0, 0, 458792, 0, 0, 458793, 0, 0, 458794, 0, 0)
+layer_1/name = "Walls"
+layer_1/tile_data = PackedInt32Array()
