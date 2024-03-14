@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://rlhwfp31o6m"]
 
 [ext_resource type="Script" path="res://Scripts/UI/sequencer.gd" id="1_repln"]
-[ext_resource type="AudioStream" uid="uid://h0b5gx75msht" path="res://Resources/Audio/metronome.ogg" id="3_hl7d5"]
+[ext_resource type="AudioStream" uid="uid://cwtwmketav5fv" path="res://Resources/Audio/metronom.ogg" id="2_rkmn4"]
 
 [node name="Sequencer" type="Control"]
 layout_mode = 3
@@ -27,8 +27,8 @@ grow_vertical = 0
 [node name="TempoTimer" type="Timer" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_hl7d5")
-volume_db = -6.0
+stream = ExtResource("2_rkmn4")
+volume_db = -12.0
 max_polyphony = 2
 
 [connection signal="timeout" from="TempoTimer" to="." method="_on_tempo_timer_timeout"]
