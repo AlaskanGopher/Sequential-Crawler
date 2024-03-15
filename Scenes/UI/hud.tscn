@@ -1,26 +1,116 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxrhbmw8khcun"]
+[gd_scene load_steps=8 format=3 uid="uid://bxrhbmw8khcun"]
 
 [ext_resource type="PackedScene" uid="uid://rlhwfp31o6m" path="res://Scenes/UI/sequencer.tscn" id="1_b1ktv"]
 [ext_resource type="Script" path="res://Scripts/UI/hud.gd" id="1_n11s0"]
+
+[sub_resource type="GDScript" id="GDScript_luwbh"]
+script/source = "extends ColorRect
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	$Label.text = str(z_index)
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_n4xrr"]
+font_size = 64
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="GDScript" id="GDScript_id54d"]
+script/source = "extends ColorRect
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	$Label.text = str(z_index)
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_42kok"]
+font_size = 64
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_02sgv"]
+font_size = 64
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_n11s0")
 
 [node name="Sequencer" parent="." instance=ExtResource("1_b1ktv")]
 
-[node name="ColorRect" type="ColorRect" parent="." groups=["Sequencables"]]
+[node name="magenta" type="ColorRect" parent="." groups=["Sequencables"]]
 offset_left = 322.0
 offset_top = 157.0
-offset_right = 362.0
-offset_bottom = 197.0
+offset_right = 422.0
+offset_bottom = 257.0
 color = Color(1, 0, 1, 1)
+script = SubResource("GDScript_luwbh")
 
-[node name="ColorRect2" type="ColorRect" parent="." groups=["Sequencables"]]
+[node name="Label" type="Label" parent="magenta"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_n4xrr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cyan" type="ColorRect" parent="." groups=["Sequencables"]]
 z_index = 1
-offset_left = 322.0
-offset_top = 157.0
-offset_right = 362.0
-offset_bottom = 197.0
+offset_left = 732.0
+offset_top = 172.0
+offset_right = 832.0
+offset_bottom = 272.0
 color = Color(0, 1, 1, 1)
+script = SubResource("GDScript_id54d")
+
+[node name="Label" type="Label" parent="cyan"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_42kok")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="yellow" type="ColorRect" parent="." groups=["Sequencables"]]
+z_index = 2
+offset_left = 490.0
+offset_top = 276.0
+offset_right = 590.0
+offset_bottom = 376.0
+color = Color(1, 1, 0, 1)
+script = SubResource("GDScript_id54d")
+
+[node name="Label" type="Label" parent="yellow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "2"
+label_settings = SubResource("LabelSettings_02sgv")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="on_beat" from="Sequencer" to="." method="_on_sequencer_on_beat"]

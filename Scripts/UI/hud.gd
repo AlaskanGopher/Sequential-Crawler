@@ -10,16 +10,37 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+#func _process(delta):
+	#if grabbedNode:
+		#grabbedNode.position = grabbedNode.get_global_mouse_position()
 	
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			var selectedZIndex = -INF
-			for node in get_tree().get_nodes_in_group("Sequencables"):
-				if node.z_index > selectedZIndex and Rect2(Vector2.ZERO, node.size).has_point(node.get_local_mouse_position()):
-					grabbedNode = node
+			var sequencables = get_tree().get_nodes_in_group("Sequencables")
+			var sortedSequencableIndices := range(len(sequencables))
+			sortedSequencableIndices.sort_custom(func(a : int, b : int): return sequencables[a].z_index > sequencables[b].z_index)
+			
+			for i in sortedSequencableIndices:
+				print(sequencables[i].name, ": ", sequencables[i].z_index)
+			
+			var highestSelectedIndex = -1
+			for ii in range(len(sortedSequencableIndices)):
+				var i = sortedSequencableIndices[ii]
+				if Rect2(Vector2.ZERO, sequencables[i].size).has_point(sequencables[i].get_local_mouse_position()):
+					grabbedNode = sequencables[i]
+					highestSelectedIndex = ii
+					break
+			print(highestSelectedIndex)
+			if highestSelectedIndex != -1:
+				for i in range(highestSelectedIndex, 0, -1):
+					var temp = sortedSequencableIndices[i]
+					sortedSequencableIndices[i] = sortedSequencableIndices[i - 1]
+					sortedSequencableIndices[i - 1] = temp
+				
+				for i in range(len(sortedSequencableIndices)):
+					sequencables[sortedSequencableIndices[i]].z_index = len(sortedSequencableIndices) - i
+					
 		elif !event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			grabbedNode = null
 	

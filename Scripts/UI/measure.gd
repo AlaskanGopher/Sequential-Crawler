@@ -31,7 +31,7 @@ func progressSequence():
 		beats[currentBeat].color = Color.WHITE
 	self.currentBeat += 1
 	if self.currentBeat < len(beats):
-		beats[currentBeat].color = Color.LIGHT_GRAY
+		beats[currentBeat].color = Color.GRAY
 	else:
 		self.currentBeat = -1
 		emit_signal("measureFinished")
